@@ -1,0 +1,39 @@
+version: "3"
+
+services:
+  app:
+    networks:
+      - app-net
+    ports:
+      - "8080:8080"
+    build:
+      context: .
+      dockerfile: ./docker/app/Dockerfile
+    depends_on:
+      - db
+  db:
+    networks:
+      - app-net
+    container_name: db
+    build:
+      context: .
+      dockerfile: ./docker/db/Dockerfile
+    env_file: .env
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+      - ./my.cnf:/etc/mysql/conf.d/my.cnf
+  minecraft:
+    container_name: mc_server
+    build:
+      context: .
+      dockerfile: ./minecraft/Dockerfile
+    volumes:
+      - ./minecraft:/workspace
+    ports:
+      - 25565:25565
+    tty: true
+    stdin_open: true
+
+networks:
+  app-net:
+    driver: bridge
