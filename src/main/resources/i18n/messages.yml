@@ -5,6 +5,4 @@ api:
     error:
       resourceNotFound: "Resource not found."
       conflictAccount: "Already exists account. name: {0}"
-      conflictProduct: "Already exists product. name: {0}"
-      conflictcolumnManage: "Already exists ColumnManage. name: {0}"
   

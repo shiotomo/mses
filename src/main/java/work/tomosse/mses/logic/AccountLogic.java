@@ -7,6 +7,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import work.tomosse.mses.enums.ErrorCode;
+import work.tomosse.mses.exception.MsesConflictException;
 import work.tomosse.mses.exception.MsesNotFoundException;
 import work.tomosse.mses.model.db.Account;
 import work.tomosse.mses.repository.AccountRepository;
@@ -39,18 +40,18 @@ public class AccountLogic {
     }
 
     /**
-     * accountの存在確認を行う 存在すれば400エラー
+     * accountの存在確認を行う 存在すれば409エラー
      *
      * @param account
      */
     public void ensureExistAccount(final Account account) {
         if (account != null) {
-            throw new MsesNotFoundException(ErrorCode.ConflictAccount, account.getName());
+            throw new MsesConflictException(ErrorCode.ConflictAccount, account.getName());
         }
     }
 
     /**
-     * accountの存在確認を行う 存在しなければ400エラー
+     * accountの存在確認を行う 存在しなければ404エラー
      *
      * @param account
      */
