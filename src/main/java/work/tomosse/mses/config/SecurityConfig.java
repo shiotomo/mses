@@ -49,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .anyRequest().authenticated()
         .and()
             .formLogin()
-            .loginPage("/login")
+            .loginPage("/")
             .loginProcessingUrl("/sign_in")
             .successForwardUrl("/dashboard")
             .usernameParameter("username")
