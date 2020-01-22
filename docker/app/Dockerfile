@@ -1,0 +1,18 @@
+FROM adoptopenjdk/openjdk11:alpine-slim
+
+ENV LANG=ja_JP.UTF-8
+
+RUN mkdir /app
+WORKDIR /app
+
+COPY . /app
+
+RUN apk --update add tzdata && \
+    cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
+    apk del tzdata && \
+    rm -rf /var/cache/apk/*
+RUN apk add gradle
+RUN apk add bash
+RUN gradle build
+
+CMD java -jar -Djava.security.egd=file:/dev/./urandom -Dspring.profiles.active=production /springboard/build/libs/app.jar

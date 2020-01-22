@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: 
+    username: 
+    password:
+    driverClassName: com.mysql.cj.jdbc.Driver
+  messages:
+    basename: i18n/messages
+    encoding: UTF-8
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+mybatis:
+  mapper-locations:
+    - classpath*:/db/mybatis/mapper/*.xml
+    - classpath*:/db/mybatis/mapper/extension/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
