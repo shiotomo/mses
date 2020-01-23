@@ -8,4 +8,5 @@ api:
       accessFailed: "Can not get data from msns API server."
       jsonParseError: "Json parse error."
       cannotReadWhiteList: "Can not read white list."
+      cannotReadOps: "Can not read ops."
   

@@ -13,6 +13,7 @@ public enum ErrorCode {
     AccessFailed(103, MessageProperty.AccessFailed),
     JsonParseError(103, MessageProperty.JsonParseError),
     CannotReadWhiteList(104, MessageProperty.CannotReadWhiteList),
+    CannotReadOps(104, MessageProperty.CannotReadOps),
     ;
 
     private int minorCode;
