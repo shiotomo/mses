@@ -7,6 +7,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import work.tomosse.mses.enums.ErrorCode;
+import work.tomosse.mses.exception.MsesBadRequestException;
 import work.tomosse.mses.exception.MsesConflictException;
 import work.tomosse.mses.exception.MsesNotFoundException;
 import work.tomosse.mses.model.db.Account;
@@ -85,6 +86,16 @@ public class AccountLogic {
     public void ensureNotExistAccount(final Account account) {
         if (account == null) {
             throw new MsesNotFoundException(ErrorCode.ResourceNotFound);
+        }
+    }
+
+    /**
+     * accountが1つ以下か確認する 1つ以下であれば400エラー
+     */
+    public void ensureLastAccount() {
+        final var accountCount = accountRepository.count();
+        if (accountCount <= 1) {
+            throw new MsesBadRequestException(ErrorCode.CannotDeleteAccount);
         }
     }
 }

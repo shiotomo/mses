@@ -14,6 +14,7 @@ public enum ErrorCode {
     JsonParseError(103, MessageProperty.JsonParseError),
     CannotReadWhiteList(104, MessageProperty.CannotReadWhiteList),
     CannotReadOps(104, MessageProperty.CannotReadOps),
+    CannotDeleteAccount(104, MessageProperty.CannotDeleteAccount),
     ;
 
     private int minorCode;

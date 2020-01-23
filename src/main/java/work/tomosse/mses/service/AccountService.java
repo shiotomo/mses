@@ -115,6 +115,7 @@ public class AccountService {
     public void deleteAccount(final Long id) {
         final var account = getAccountById(id);
         accountLogic.ensureNotExistAccount(account);
+        accountLogic.ensureLastAccount();
         accountRepository.deleteById(id);
     }
 }

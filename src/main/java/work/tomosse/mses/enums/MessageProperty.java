@@ -16,6 +16,7 @@ public enum MessageProperty {
     JsonParseError("api.message.error.jsonParseError"),
     CannotReadWhiteList("api.message.error.cannotReadWhiteList"),
     CannotReadOps("api.message.error.cannotReadOps"),
+    CannotDeleteAccount("api.message.error.cannotDeleteAccount"),
     ;
 
     private String message;
