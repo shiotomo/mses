@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout}">
+<head>
+<meta charset="UTF-8">
+<title>mses - account</title>
+</head>
+<body>
+  <div layout:fragment="contents">
+    <h1 class="title">Account List </h1>
+    <a th:href="@{/dashboard}" class="button is-primary">Dashboard</a>
+    <table class="table">
+      <tr>
+        <th>name</th>
+        <th>role</th>
+      </tr>
+      <tr th:each="account : ${accountList}">
+        <th th:text="${account.getName()}"></th>
+        <th th:text="${account.getRole()}"></th>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>

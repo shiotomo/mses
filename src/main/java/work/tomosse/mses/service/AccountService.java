@@ -1,5 +1,7 @@
 package work.tomosse.mses.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,17 @@ public class AccountService {
 
     @Autowired
     AccountLogic accountLogic;
+
+    /*
+     * accountの一覧を返却する
+     */
+    public List<Account> getAccountList() {
+        return accountRepository.selectAll();
+    }
+
+    public Account getAccountByName(final String name) {
+        return accountRepository.selectByName(name);
+    }
 
     /**
      * accountが存在しない時ADMINを作成する

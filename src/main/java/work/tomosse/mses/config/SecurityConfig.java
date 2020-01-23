@@ -19,6 +19,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     UserService userService;
 
+//    private static String ROLE_ADMIN = "ROLE_" + Role.ADMIN.getRole();
+//    private static String ROLE_User = "ROLE_" + Role.USER.getRole();
+
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();

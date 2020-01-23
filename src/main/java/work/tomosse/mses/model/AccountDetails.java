@@ -8,8 +8,8 @@ import org.springframework.security.core.userdetails.User;
 import lombok.Getter;
 
 @Getter
-public class UserDetails extends User {
-    public UserDetails(final String username, final String password, final Collection<? extends GrantedAuthority> authorities) {
+public class AccountDetails extends User {
+    public AccountDetails(final String username, final String password, final Collection<? extends GrantedAuthority> authorities) {
         super(username, password, authorities);
     }
 }

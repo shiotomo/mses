@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import work.tomosse.mses.enums.Role;
-import work.tomosse.mses.model.UserDetails;
+import work.tomosse.mses.model.AccountDetails;
 import work.tomosse.mses.repository.AccountRepository;
 
 @Service
@@ -22,7 +22,7 @@ public class UserService implements UserDetailsService {
     AccountRepository accountRepository;
 
     @Override
-    public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
+    public AccountDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
         final var account = accountRepository.selectByName(username);
         if (account == null) {
             throw new UsernameNotFoundException("userName" + username + "was not found in the database");
@@ -30,7 +30,7 @@ public class UserService implements UserDetailsService {
         final var grantList = new ArrayList<GrantedAuthority>();
         grantList.add(new SimpleGrantedAuthority(Role.ADMIN.getRole()));
         grantList.add(new SimpleGrantedAuthority(Role.USER.getRole()));
-        final var userDetails = new UserDetails(username, account.getPassword(), grantList);
+        final var userDetails = new AccountDetails(username, account.getPassword(), grantList);
         return userDetails;
     }
 
