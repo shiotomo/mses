@@ -4,16 +4,37 @@
 <head>
 <meta charset="UTF-8">
 <title>mses</title>
+<link rel="stylesheet"
+  th:href="@{https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css}">
 </head>
 <body>
-    Login
-    <form th:action="@{/sign_in}" method="POST">
-        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-        <label>Account Name</label>
-        <input type="text" name="username">
-        <label>Password</label>
-        <input type="password" name="password">
-        <input type="submit" value="login">
-    </form>
+  <header>
+    <nav class="navbar has-background-primary">
+      <a href="/dashboard" class="navbar-item">mses</a>
+    </nav>
+  </header>
+  <div class="columns">
+    <div class="column is-3"></div>
+    <div class="column is-6">
+      <div class="card">
+        <header class="card-header">
+          <p class="card-header-title">mses login</p>
+        </header>
+        <div class="card-content">
+          <div class="content">
+            <form th:action="@{/sign_in}" method="POST">
+              <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                <label>Account Name</label>
+                <input type="text" name="username" class="input is-primary">
+                <label>Password</label>
+                <input type="password" name="password" class="input is-primary">
+                <input type="submit" value="login" class="button is-primary">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="column is-3"></div>
+  </div>
 </body>
 </html>

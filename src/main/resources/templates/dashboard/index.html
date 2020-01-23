@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout}">
 <head>
 <meta charset="UTF-8">
 <title>mses</title>
 </head>
 <body>
-    <h1>Dashboard</h1>
-    <form method="post" th:action="@{/logout}">
-      <input type="submit" value="logout">
-    </form>
-    <a th:href="@{/whitelist}">white list</a>
-    <a th:href="@{/ops}">ops</a>
+  <div layout:fragment="contents">
+    <h1 class="title">Dashboard</h1>
+    <a th:href="@{/whitelist}" class="button is-primary">white list</a>
+    <a th:href="@{/ops}" class="button is-primary">ops</a>
+  </div>
 </body>
 </html>

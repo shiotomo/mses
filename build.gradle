@@ -42,6 +42,9 @@ dependencies {
   testImplementation 'org.springframework.security:spring-security-test'
 
   implementation 'net.rakugakibox.util:yaml-resource-bundle:1.1'
+  implementation 'org.thymeleaf:thymeleaf'
+  implementation 'org.thymeleaf:thymeleaf-spring5'
+  implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
 }
 
 test {

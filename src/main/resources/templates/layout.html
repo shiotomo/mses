@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<title>mses</title>
+<link rel="stylesheet"
+  th:href="@{https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css}">
+</head>
+<body>
+  <header>
+    <nav class="navbar has-background-primary">
+      <a href="/dashboard" class="navbar-item">mses</a>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="field is-grouped">
+            <form method="post" th:action="@{/logout}">
+              <input type="submit" value="logout" class="button is-danger">
+            </form>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <div class="columns">
+    <div class="column is-1"></div>
+    <div class="column is-10">
+      <div layout:fragment="contents"></div>
+    </div>
+    <div class="column is-1"></div>
+  </div>
+</body>
+</html>

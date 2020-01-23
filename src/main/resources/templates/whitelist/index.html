@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout}">
 <head>
 <meta charset="UTF-8">
-<title>mses</title>
+<title>mses - whitelist</title>
 </head>
 <body>
-  <h1>Whitelist</h1>
-  <form method="post" th:action="@{/logout}">
-    <input type="submit" value="logout">
-  </form>
-  <a th:href="@{/dashboard}">Dashboard</a>
-  <table border="1">
-    <tr>
-      <th>uuid</th>
-      <th>name</th>
-    </tr>
-    <tr th:each="user : ${whiteList}">
-      <td th:text="${user.uuid}"></td>
-      <td th:text="${user.name}"></td>
-    </tr>
-  </table>
+  <div layout:fragment="contents">
+    <h1 class="title">Whitelist</h1>
+    <a th:href="@{/dashboard}" class="button is-primary">Dashboard</a>
+    <table class="table">
+      <tr>
+        <th>uuid</th>
+        <th>name</th>
+      </tr>
+      <tr th:each="user : ${whiteList}">
+        <td th:text="${user.uuid}"></td>
+        <td th:text="${user.name}"></td>
+      </tr>
+    </table>
+  </div>
 </body>
 </html>
