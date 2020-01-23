@@ -22,17 +22,6 @@ services:
     volumes:
       - ./mysql_data:/var/lib/mysql
       - ./my.cnf:/etc/mysql/conf.d/my.cnf
-  minecraft:
-    container_name: mc_server
-    build:
-      context: .
-      dockerfile: ./minecraft/Dockerfile
-    volumes:
-      - ./minecraft:/workspace
-    ports:
-      - 25565:25565
-    tty: true
-    stdin_open: true
 
 networks:
   app-net:

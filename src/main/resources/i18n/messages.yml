@@ -5,4 +5,6 @@ api:
     error:
       resourceNotFound: "Resource not found."
       conflictAccount: "Already exists account. name: {0}"
+      accessFailed: "Can not get data from msns API server."
+      accessFailed: "Json parse error."
   

@@ -6,10 +6,20 @@
 <title>mses</title>
 </head>
 <body>
-    <h1>Whitelist</h1>
-    <form method="post" th:action="@{/logout}">
-      <input type="submit" value="logout">
-    </form>
-    <a th:href="@{/dashboard}">Dashboard</a>
+  <h1>Whitelist</h1>
+  <form method="post" th:action="@{/logout}">
+    <input type="submit" value="logout">
+  </form>
+  <a th:href="@{/dashboard}">Dashboard</a>
+  <table border="1">
+    <tr>
+      <th>uuid</th>
+      <th>name</th>
+    </tr>
+    <tr th:each="user : ${whiteList}">
+      <td th:text="${user.uuid}"></td>
+      <td th:text="${user.name}"></td>
+    </tr>
+  </table>
 </body>
 </html>

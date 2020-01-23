@@ -12,6 +12,9 @@ public enum MessageProperty {
     // Error系
     ResourceNotFound("api.message.error.resourceNotFound"),
     ConflictAccount("api.message.error.conflictAccount"),
+    AccessFailed("api.message.error.accessFailed"),
+    JsonParseError("api.message.error.jsonParseError"),
+    CannotReadWhiteList("api.message.error.cannotReadWhiteList"),
     ;
 
     private String message;

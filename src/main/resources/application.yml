@@ -17,3 +17,6 @@ mybatis:
     - classpath*:/db/mybatis/mapper/extension/*.xml
   configuration:
     map-underscore-to-camel-case: true
+msns:
+  url:    
+    
