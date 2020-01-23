@@ -37,7 +37,7 @@ public class WhiteListService {
             final var whiteList = objectMapper.readValue(resultJson, new TypeReference<List<WhiteList>>() {});
             return whiteList;
         } catch (final JsonProcessingException e) {
-            throw new MsesBadRequestException(ErrorCode.JsonParseError);
+            throw new MsesBadRequestException(ErrorCode.CannotReadWhiteList);
         }
     }
 
