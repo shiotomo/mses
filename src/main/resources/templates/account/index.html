@@ -11,14 +11,33 @@
   <div layout:fragment="contents">
     <h1 class="title">Account List </h1>
     <a th:href="@{/dashboard}" class="button is-primary">Dashboard</a>
+    <a th:href="@{/account/new}" class="button is-primary">Create account</a>
     <table class="table">
       <tr>
+        <th>id</th>
         <th>name</th>
+        <th>minecraft name</th>
+        <th>minecraft uuid</th>
         <th>role</th>
+        <th>created at</th>
+        <th>updated at</th>
+        <th>edit</th>
+        <th>delete</th>
       </tr>
       <tr th:each="account : ${accountList}">
+        <th th:text="${account.getId()}"></th>
         <th th:text="${account.getName()}"></th>
+        <th th:text="${account.getMinecraftName()}"></th>
+        <th th:text="${account.getMinecraftUuid()}"></th>
         <th th:text="${account.getRole()}"></th>
+        <th th:text="${account.getCreatedAt()}"></th>
+        <th th:text="${account.getUpdatedAt()}"></th>
+        <th><a th:href="@{'/account/' + ${account.getId()} + '/edit'}" class="button is-primary">edit</a></th>
+        <th>
+          <form th:action="@{'/account/'  + ${account.getId()} + '/delete'}" th:method="DELETE" onSubmit="confirm('Are you sure?')">
+            <input type="submit" value="delete" class="button is-danger">
+          </form>
+        </th>
       </tr>
     </table>
   </div>

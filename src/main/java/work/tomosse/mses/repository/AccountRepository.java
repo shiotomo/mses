@@ -70,6 +70,16 @@ public class AccountRepository {
     }
 
     /**
+     * accountを更新する
+     *
+     * @param account
+     * @return
+     */
+    public int update(final Account account) {
+        return accountMapper.updateByPrimaryKey(account);
+    }
+
+    /**
      * accountを削除する
      *
      * @param account

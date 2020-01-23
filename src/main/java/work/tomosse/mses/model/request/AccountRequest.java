@@ -17,6 +17,12 @@ public class AccountRequest {
     @NotBlank
     private String password;
 
+    @JsonProperty("minecraftName")
+    private String minecraftName;
+
+    @JsonProperty("minecraftUuid")
+    private String minecraftUuid;
+
     @JsonProperty("role")
     @NotBlank
     private Role role;

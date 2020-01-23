@@ -28,15 +28,42 @@ public class AccountLogic {
      * @param role
      * @return
      */
-    public int createAccount(final String name, final String password, final String role) {
+    public int createAccount(final String name, final String password, final String role, final String minecraftName, final String minecraftUuid) {
         final var encordPassword = passwordEncoder.encode(password);
         final var account = new Account();
         account.setName(name);
         account.setPassword(encordPassword);
         account.setRole(role);
+        account.setMinecraftName(minecraftName);
+        account.setMinecraftUuid(minecraftUuid);
         account.setCreatedAt(new Date());
         account.setUpdatedAt(new Date());
         return accountRepository.insert(account);
+    }
+
+    /**
+     * accountを更新する
+     *
+     * @param id
+     * @param name
+     * @param password
+     * @param role
+     * @param minecraftName
+     * @param minecraftUuid
+     */
+    public void updateAccount(final Account oldAccount, final String name, final String password, final String role, final String minecraftName,
+            final String minecraftUuid) {
+        final var encordPassword = passwordEncoder.encode(password);
+        final var account = new Account();
+        account.setId(oldAccount.getId());
+        account.setName(name);
+        account.setPassword(encordPassword);
+        account.setRole(role);
+        account.setMinecraftName(minecraftName);
+        account.setMinecraftUuid(minecraftUuid);
+        account.setCreatedAt(oldAccount.getCreatedAt());
+        account.setUpdatedAt(new Date());
+        accountRepository.update(account);
     }
 
     /**
