@@ -64,11 +64,9 @@ public class AccountService {
     public Account createAccount(final Account account) {
         final var name = account.getName();
         final var password = account.getPassword();
-        final var minecraftName = account.getMinecraftName();
-        final var minecraftUuid = account.getMinecraftUuid();
         final var role = account.getRole();
         accountLogic.ensureNotExistAccount(account);
-        accountLogic.createAccount(name, password, role, minecraftName, minecraftUuid);
+        accountLogic.createAccount(name, password, role);
         return accountRepository.selectByName(name);
     }
 
@@ -82,11 +80,9 @@ public class AccountService {
         final var name = accountRequest.getName();
         final var password = accountRequest.getPassword();
         final var role = accountRequest.getRole().getRole();
-        final var minecraftName = accountRequest.getMinecraftName();
-        final var minecraftUuid = accountRequest.getMinecraftUuid();
         final var account = getAccountByName(name);
         accountLogic.ensureExistAccount(account);
-        accountLogic.createAccount(name, password, role, minecraftName, minecraftUuid);
+        accountLogic.createAccount(name, password, role);
         return accountRepository.selectByName(name);
     }
 
@@ -99,12 +95,10 @@ public class AccountService {
     public void updateAccount(final Long id, final Account account) {
         final var name = account.getName();
         final var password = account.getPassword();
-        final var minecraftName = account.getMinecraftName();
-        final var minecraftUuid = account.getMinecraftUuid();
         final var role = account.getRole();
         final var oldAccount = getAccountById(id);
         accountLogic.ensureNotExistAccount(oldAccount);
-        accountLogic.updateAccount(oldAccount, name, password, role, minecraftName, minecraftUuid);
+        accountLogic.updateAccount(oldAccount, name, password, role);
     }
 
     /**

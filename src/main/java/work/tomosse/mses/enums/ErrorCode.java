@@ -15,6 +15,7 @@ public enum ErrorCode {
     CannotReadWhiteList(104, MessageProperty.CannotReadWhiteList),
     CannotReadOps(104, MessageProperty.CannotReadOps),
     CannotDeleteAccount(104, MessageProperty.CannotDeleteAccount),
+    NotFoundMinecraftAccount(104, MessageProperty.NotFoundMinecraftAccount),
     ;
 
     private int minorCode;

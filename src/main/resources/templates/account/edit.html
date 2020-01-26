@@ -25,10 +25,6 @@
                 <input type="text" name="name" class="input is-primary" th:value="${account.getName()}">
                 <label>Password</label>
                 <input type="password" name="password" class="input is-primary">
-                <label>minecraft name</label>
-                <input type="text" name="minecraftName" class="input is-primary" th:value="${account.getMinecraftName()}">
-                <label>minecraft uuid</label>
-                <input type="text" name="minecraftUuid" class="input is-primary" th:value="${account.getMinecraftUuid()}">
                 <label>Role</label>
                 <select name="role" class="input">
                   <option value="ADMIN" th:selected="${account.getRole() == ADMIN}">ADMIN</option>
