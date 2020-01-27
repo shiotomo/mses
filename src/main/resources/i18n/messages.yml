@@ -11,3 +11,4 @@ api:
       cannotReadOps: "Can not read ops."
       cannotDeleteAccount: "Can not delete account."
       notFoundMinecraftAccount: "Not found minecraft account. name: {0}"  
+      InvalidPassword: "Invalid Password"  

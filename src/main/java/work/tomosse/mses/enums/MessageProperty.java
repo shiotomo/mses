@@ -18,6 +18,7 @@ public enum MessageProperty {
     CannotReadOps("api.message.error.cannotReadOps"),
     CannotDeleteAccount("api.message.error.cannotDeleteAccount"),
     NotFoundMinecraftAccount("api.message.error.notFoundMinecraftAccount"),
+    InvalidPassword("api.message.error.InvalidPassword"),
     ;
 
     private String message;

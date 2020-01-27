@@ -16,6 +16,7 @@ public enum ErrorCode {
     CannotReadOps(104, MessageProperty.CannotReadOps),
     CannotDeleteAccount(104, MessageProperty.CannotDeleteAccount),
     NotFoundMinecraftAccount(104, MessageProperty.NotFoundMinecraftAccount),
+    InvalidPassowrd(104, MessageProperty.InvalidPassword),
     ;
 
     private int minorCode;
