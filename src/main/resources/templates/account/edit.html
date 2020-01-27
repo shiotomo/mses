@@ -23,8 +23,6 @@
                 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                 <label>name</label>
                 <input type="text" name="name" class="input is-primary" th:value="${account.getName()}">
-                <label>Password</label>
-                <input type="password" name="password" class="input is-primary">
                 <label>Role</label>
                 <select name="role" class="input">
                   <option value="ADMIN" th:selected="${account.getRole() == ADMIN}">ADMIN</option>

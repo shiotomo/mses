@@ -94,11 +94,10 @@ public class AccountService {
      */
     public void updateAccount(final Long id, final Account account) {
         final var name = account.getName();
-        final var password = account.getPassword();
         final var role = account.getRole();
         final var oldAccount = getAccountById(id);
         accountLogic.ensureNotExistAccount(oldAccount);
-        accountLogic.updateAccount(oldAccount, name, password, role);
+        accountLogic.updateAccount(oldAccount, name, oldAccount.getPassword(), role);
     }
 
     /**

@@ -51,11 +51,10 @@ public class AccountLogic {
      * @param minecraftUuid
      */
     public void updateAccount(final Account oldAccount, final String name, final String password, final String role) {
-        final var encordPassword = passwordEncoder.encode(password);
         final var account = new Account();
         account.setId(oldAccount.getId());
         account.setName(name);
-        account.setPassword(encordPassword);
+        account.setPassword(password);
         account.setRole(role);
         account.setCreatedAt(oldAccount.getCreatedAt());
         account.setUpdatedAt(new Date());
