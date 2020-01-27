@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout}">
+<head>
+<meta charset="UTF-8">
+<title>mses - account</title>
+</head>
+<body>
+  <div layout:fragment="contents">
+    <h1 class="title">Login log</h1>
+    <a th:href="@{/account}" class="button is-primary">Account List</a>
+    <table class="table">
+      <tr>
+        <th>LoginDate</th>
+      </tr>
+      <tr th:each="loginLog : ${loginLogList}">
+        <td th:text="${loginLog.getLoginTime()}"></td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>

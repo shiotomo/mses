@@ -4,6 +4,7 @@ import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import work.tomosse.mses.service.AccountService;
+import work.tomosse.mses.service.LoginLogService;
 
 @Controller
 @RequestMapping("/dashboard")
@@ -18,6 +20,9 @@ public class DashboardController {
 
     @Autowired
     AccountService accountService;
+
+    @Autowired
+    LoginLogService loginLogService;
 
     /**
      * Dashboardを表示する
@@ -41,6 +46,8 @@ public class DashboardController {
      */
     @PostMapping
     public String login() {
+        final var principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        loginLogService.loginMses(principal);
         return "redirect:/dashboard";
     }
 }

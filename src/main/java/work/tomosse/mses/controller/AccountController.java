@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import work.tomosse.mses.model.db.Account;
 import work.tomosse.mses.service.AccountService;
+import work.tomosse.mses.service.LoginLogService;
 
 @RequestMapping("/account")
 @Controller
@@ -20,6 +21,9 @@ public class AccountController {
 
     @Autowired
     AccountService accountService;
+
+    @Autowired
+    LoginLogService loginLogService;
 
     /**
      * account listを表示する
@@ -31,6 +35,21 @@ public class AccountController {
     public ModelAndView index(final ModelAndView mav) {
         mav.addObject("accountList", accountService.getAccountList());
         mav.setViewName("account/index");
+        return mav;
+    }
+
+    /**
+     * accountの詳細を表示する
+     *
+     * @param mav
+     * @param id
+     * @return
+     */
+    @GetMapping("/{id}")
+    public ModelAndView show(final ModelAndView mav, @PathVariable final Long id) {
+        mav.addObject("account", accountService.getAccountById(id));
+        mav.addObject("loginLogList", loginLogService.selectWhrereAccountId(id));
+        mav.setViewName("account/show");
         return mav;
     }
 

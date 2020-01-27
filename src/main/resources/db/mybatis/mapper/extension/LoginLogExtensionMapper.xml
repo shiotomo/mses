@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="work.tomosse.mses.mapper.extension.LoginLogExtensionMapper">
+  <select id="selectWhereAccountId" parameterType="java.lang.Long" resultType="work.tomosse.mses.model.db.LoginLog">
+    SELECT id, login_time, account_id, created_at, updated_at FROM login_log WHERE account_id = #{id}
+  </select>
+</mapper>

@@ -20,23 +20,26 @@
         <th>role</th>
         <th>created at</th>
         <th>updated at</th>
+        <th>details</th>
         <th>edit</th>
         <th>delete</th>
       </tr>
       <tr th:each="account : ${accountList}">
-        <th th:text="${account.getId()}"></th>
-        <th th:text="${account.getName()}"></th>
-        <th th:text="${account.getRole()}"></th>
-        <th th:text="${account.getCreatedAt()}"></th>
-        <th th:text="${account.getUpdatedAt()}"></th>
-        <th><a th:href="@{'/account/' + ${account.getId()} + '/edit'}"
-          class="button is-primary">edit</a></th>
-        <th>
+        <td th:text="${account.getId()}"></td>
+        <td th:text="${account.getName()}"></td>
+        <td th:text="${account.getRole()}"></td>
+        <td th:text="${account.getCreatedAt()}"></td>
+        <td th:text="${account.getUpdatedAt()}"></td>
+        <td><a th:href="@{'/account/' + ${account.getId()}}"
+          class="button is-info">info</a></td>
+        <td><a th:href="@{'/account/' + ${account.getId()} + '/edit'}"
+          class="button is-primary">edit</a></td>
+        <td>
           <form th:action="@{'/account/'  + ${account.getId()} + '/delete'}"
             th:method="DELETE">
             <input type="submit" value="delete" class="button is-danger">
           </form>
-        </th>
+        </td>
       </tr>
     </table>
   </div>
