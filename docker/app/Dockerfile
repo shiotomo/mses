@@ -15,4 +15,4 @@ RUN apk add gradle
 RUN apk add bash
 RUN gradle build
 
-CMD java -jar -Djava.security.egd=file:/dev/./urandom -Dspring.profiles.active=production /springboard/build/libs/app.jar
+CMD java -jar -Djava.security.egd=file:/dev/./urandom -Dspring.profiles.active=production /build/libs/app.jar
