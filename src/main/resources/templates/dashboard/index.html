@@ -10,11 +10,30 @@
 <body>
   <div layout:fragment="contents">
     <h1 class="title">Dashboard</h1>
-    <a th:href="@{/whitelist}" class="button is-primary">white list</a>
-    <a th:href="@{/ops}" class="button is-primary">ops</a>
     <span th:if="${account.getRole() == 'ADMIN'}">
       <a th:href="@{/account}" class="button is-info">account</a>
     </span>
+    <div class="card">
+      <header class="card-header">
+        <p class="card-header-title">Monitoring Minecraft Server</p>
+      </header>
+      <div class="card-content">
+        <div class="content">
+          <label>Host</label>
+          <p th:text="${minecraftServer.getHost()}"></p>
+          <label>Version</label>
+          <p th:text="${minecraftServer.getVersion()}"></p>
+          <label>Status</label>
+          <ul th:each="entry : ${minecraftServer.getStatus()}">
+            <li th:text="${entry.key} + ':' + ${entry.value}"></li>
+          </ul>
+        </div>
+      </div>
+      <footer class="card-footer">
+        <a th:href="@{/whitelist}" class="card-footer-item">white list</a>
+        <a th:href="@{/ops}" class="card-footer-item">ops</a>
+      </footer>
+    </div>
   </div>
 </body>
 </html>

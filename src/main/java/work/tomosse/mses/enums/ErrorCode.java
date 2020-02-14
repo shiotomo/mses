@@ -11,12 +11,13 @@ public enum ErrorCode {
     ResourceNotFound(101, MessageProperty.ResourceNotFound),
     ConflictAccount(102, MessageProperty.ConflictAccount),
     AccessFailed(103, MessageProperty.AccessFailed),
-    JsonParseError(103, MessageProperty.JsonParseError),
-    CannotReadWhiteList(104, MessageProperty.CannotReadWhiteList),
-    CannotReadOps(104, MessageProperty.CannotReadOps),
-    CannotDeleteAccount(104, MessageProperty.CannotDeleteAccount),
-    NotFoundMinecraftAccount(104, MessageProperty.NotFoundMinecraftAccount),
-    InvalidPassowrd(104, MessageProperty.InvalidPassword),
+    JsonParseError(104, MessageProperty.JsonParseError),
+    CannotReadWhiteList(105, MessageProperty.CannotReadWhiteList),
+    CannotReadOps(106, MessageProperty.CannotReadOps),
+    CannotDeleteAccount(107, MessageProperty.CannotDeleteAccount),
+    NotFoundMinecraftAccount(108, MessageProperty.NotFoundMinecraftAccount),
+    InvalidPassowrd(109, MessageProperty.InvalidPassword),
+    CannotReadMinecraftServer(108, MessageProperty.CannotReadMinecraftServer),
     ;
 
     private int minorCode;

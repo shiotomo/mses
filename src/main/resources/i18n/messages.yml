@@ -12,3 +12,4 @@ api:
       cannotDeleteAccount: "Can not delete account."
       notFoundMinecraftAccount: "Not found minecraft account. name: {0}"  
       InvalidPassword: "Invalid Password"  
+      cannotReadMinecraftServer: "Can not read minecraft server."
