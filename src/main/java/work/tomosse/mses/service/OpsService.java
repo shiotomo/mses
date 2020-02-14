@@ -12,7 +12,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import work.tomosse.mses.config.MsesProperty;
 import work.tomosse.mses.enums.ErrorCode;
 import work.tomosse.mses.exception.MsesBadRequestException;
-import work.tomosse.mses.model.OpsList;
+import work.tomosse.mses.model.msns.OpsList;
 import work.tomosse.mses.util.HttpClientUtils;
 
 @Service

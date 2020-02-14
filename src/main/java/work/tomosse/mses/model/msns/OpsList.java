@@ -1,4 +1,4 @@
-package work.tomosse.mses.model;
+package work.tomosse.mses.model.msns;
 
 import javax.validation.constraints.NotBlank;
 

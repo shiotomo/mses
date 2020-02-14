@@ -19,7 +19,8 @@ public class AccountLogic {
     @Autowired
     AccountRepository accountRepository;
 
-    private final static BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    @Autowired
+    BCryptPasswordEncoder passwordEncoder;
 
     /**
      * accountを作成する
