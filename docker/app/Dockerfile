@@ -13,6 +13,6 @@ RUN apk --update add tzdata && \
     rm -rf /var/cache/apk/*
 RUN apk add gradle
 RUN apk add bash
-RUN gradle build
+RUN ./gradlew build
 
-CMD java -jar -Djava.security.egd=file:/dev/./urandom -Dspring.profiles.active=production /build/libs/app.jar
+CMD java -jar -Djava.security.egd=file:/dev/./urandom -Dspring.profiles.active=production build/libs/mses.jar
