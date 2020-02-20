@@ -22,6 +22,12 @@ repositories {
   mavenCentral()
 }
 
+bootRun {
+    if (project.hasProperty('args')) {
+        args project.args.split(',')
+    }
+}
+
 bootJar {
   baseName = 'mses'
 }

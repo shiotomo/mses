@@ -33,6 +33,7 @@
     <!-- コードを生成するテーブルを指定 -->
     <table tableName="account"></table>
     <table tableName="login_log"></table>
+    <table tableName="msns"></table>
 
   </context>
 </generatorConfiguration>
