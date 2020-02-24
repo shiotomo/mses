@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import work.tomosse.mses.mapper.MsnsMapper;
+import work.tomosse.mses.mapper.extension.MsnsExtensionMapper;
 import work.tomosse.mses.model.db.Msns;
 import work.tomosse.mses.model.db.MsnsExample;
 
@@ -15,6 +16,9 @@ public class MsnsRepository {
     @Autowired
     MsnsMapper msnsMapper;
 
+    @Autowired
+    MsnsExtensionMapper msnsExtensionMapper;
+
     /**
      * msnsの一覧を返却する
      *
@@ -23,6 +27,16 @@ public class MsnsRepository {
     public List<Msns> select() {
         final var example = new MsnsExample();
         return msnsMapper.selectByExample(example);
+    }
+
+    /**
+     * 指定したhostのmsnsを返却する
+     *
+     * @param host
+     * @return
+     */
+    public Msns selectByHost(final String host) {
+        return msnsExtensionMapper.selectByHost(host);
     }
 
     /**
