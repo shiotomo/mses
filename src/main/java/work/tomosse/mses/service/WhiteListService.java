@@ -1,5 +1,6 @@
 package work.tomosse.mses.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,9 @@ public class WhiteListService {
             final var objectMapper = new ObjectMapper();
             final var whiteList = objectMapper.readValue(resultJson, new TypeReference<List<WhiteList>>() {});
             return whiteList;
+        } catch (final IllegalArgumentException e) {
+            // msnsからデータが取得できない場合のExceptionのため、空のWhiteListのListを返却する
+            return new ArrayList<WhiteList>();
         } catch (final JsonProcessingException e) {
             throw new MsesBadRequestException(ErrorCode.CannotReadWhiteList);
         }

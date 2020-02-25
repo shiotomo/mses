@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import work.tomosse.mses.enums.Role;
 import work.tomosse.mses.service.UserService;
 
 @Configuration
@@ -49,6 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .and()
             .authorizeRequests()
             .antMatchers("/", "/api/v1/**").permitAll()
+            .antMatchers("/account/**", "/msns/**").hasRole(Role.ADMIN.getRole())
             .anyRequest().authenticated()
         .and()
             .formLogin()

@@ -28,6 +28,9 @@ public class MinecraftServerService {
             final var objectMapper = new ObjectMapper();
             final var minecraftServer = objectMapper.readValue(resultJson, MinecraftServer.class);
             return minecraftServer;
+        } catch (final IllegalArgumentException e) {
+            // msnsからデータが取得できない場合のExceptionのため、空のMinecraftServerを返却する
+            return new MinecraftServer();
         } catch (final JsonProcessingException e) {
             throw new MsesBadRequestException(ErrorCode.CannotReadMinecraftServer);
         }

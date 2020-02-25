@@ -11,7 +11,8 @@
   <div layout:fragment="contents">
     <h1 class="title">Dashboard</h1>
     <span th:if="${account.getRole() == 'ADMIN'}">
-      <a th:href="@{/account}" class="button is-info">account</a>
+      <a th:href="@{/account}" class="button is-info">Account List</a>
+      <a th:href="@{/msns/new}" class="button is-info">New msns</a>
     </span>
     <div class="card">
       <header class="card-header">

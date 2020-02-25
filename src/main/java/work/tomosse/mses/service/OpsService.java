@@ -1,5 +1,6 @@
 package work.tomosse.mses.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,9 @@ public class OpsService {
             final var objectMapper = new ObjectMapper();
             final var opsList = objectMapper.readValue(resultJson, new TypeReference<List<OpsList>>() {});
             return opsList;
+        } catch (final IllegalArgumentException e) {
+            // msnsからデータが取得できない場合のExceptionのため、空のOpsListのListを返却する
+            return new ArrayList<OpsList>();
         } catch (final JsonProcessingException e) {
             throw new MsesBadRequestException(ErrorCode.CannotReadOps);
         }

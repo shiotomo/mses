@@ -9,9 +9,6 @@ import java.nio.charset.StandardCharsets;
 
 import org.springframework.stereotype.Component;
 
-import work.tomosse.mses.enums.ErrorCode;
-import work.tomosse.mses.exception.MsesBadRequestException;
-
 @Component
 public class HttpClientUtils {
 
@@ -28,7 +25,8 @@ public class HttpClientUtils {
             final var httpResponse = HttpClient.newBuilder().build().send(httpRequest, bodyHandler);
             return httpResponse.body();
         } catch (IOException | InterruptedException e) {
-            throw new MsesBadRequestException(ErrorCode.AccessFailed);
+            // Excptionが発生した場合nullを返却する
+            return null;
         }
     }
 }
