@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import work.tomosse.mses.service.AccountService;
 import work.tomosse.mses.service.LoginLogService;
 import work.tomosse.mses.service.MinecraftServerService;
+import work.tomosse.mses.service.MsnsService;
 
 @Controller
 @RequestMapping("/dashboard")
@@ -28,6 +29,9 @@ public class DashboardController {
     @Autowired
     MinecraftServerService minecraftServerService;
 
+    @Autowired
+    MsnsService msnsService;
+
     /**
      * Dashboardを表示する
      * TODO: principalから直接アカウント情報を取得するようにする
@@ -39,6 +43,7 @@ public class DashboardController {
     public ModelAndView index(final ModelAndView mav, @AuthenticationPrincipal final Principal principal) {
         mav.addObject("account", accountService.getAccountByName(principal.getName()));
         mav.addObject("minecraftServer", minecraftServerService.getStatus());
+        mav.addObject("msnsList", msnsService.getListByRole(principal.getName()));
         mav.setViewName("dashboard/index");
         return mav;
     }

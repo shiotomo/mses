@@ -9,8 +9,33 @@
 </head>
 <body>
   <div layout:fragment="contents">
-    <h1 class="title">New msns</h1>
-    <a th:href="@{/dashboard}" class="button is-primary">Dashboard</a>
+    <div class="columns">
+      <div class="column is-3"></div>
+      <div class="column is-6">
+        <div class="card">
+          <header class="card-header">
+            <p class="card-header-title">New msns</p>
+          </header>
+          <div class="card-content">
+            <a th:href="@{/dashboard}" class="button is-primary">Dashboard</a>
+            <hr />
+            <div class="content">
+              <form th:action="@{/msns/create}" method="POST">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                <label>host</label>
+                <input type="text" name="host" class="input is-primary">
+                <label>port</label>
+                <input type="number" name="port" class="input is-primary">
+                <label>minecraft server version</label>
+                <input type="text" name="version" class="input is-primary">
+                <input type="submit" value="submit" class="button is-primary">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="column is-3"></div>
+    </div>
   </div>
 </body>
 </html>
