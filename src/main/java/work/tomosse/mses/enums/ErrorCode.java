@@ -18,6 +18,7 @@ public enum ErrorCode {
     NotFoundMinecraftAccount(108, MessageProperty.NotFoundMinecraftAccount),
     InvalidPassowrd(109, MessageProperty.InvalidPassword),
     CannotReadMinecraftServer(108, MessageProperty.CannotReadMinecraftServer),
+    WhitelistPermissionError(109, MessageProperty.WhitelistPermissionError),
     ;
 
     private int minorCode;

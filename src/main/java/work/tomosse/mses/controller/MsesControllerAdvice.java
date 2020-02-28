@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import work.tomosse.mses.exception.MsesBadRequestException;
+import work.tomosse.mses.exception.MsesForbiddenException;
 import work.tomosse.mses.exception.MsesNotFoundException;
 import work.tomosse.mses.util.MessageSourceUtils;
 
@@ -42,6 +43,24 @@ public class MsesControllerAdvice {
      */
     @ExceptionHandler(MsesNotFoundException.class)
     public String handler(final MsesNotFoundException e, final Model model) {
+        final var args = e.getArgs();
+        final var message = e.getErrorCode().getMessageProperty().getMessage();
+        final var errorMessage = messageSource.getMessage(message, args);
+        final var errorCode = e.getErrorCode().getMinorCode();
+        model.addAttribute("errorMessage", errorMessage);
+        model.addAttribute("errorCode", errorCode);
+        return "error";
+    }
+
+    /**
+     * MsesNotForbiddenException用のエラーハンドラー
+     *
+     * @param mav
+     * @param e
+     * @return
+     */
+    @ExceptionHandler(MsesForbiddenException.class)
+    public String handler(final MsesForbiddenException e, final Model model) {
         final var args = e.getArgs();
         final var message = e.getErrorCode().getMessageProperty().getMessage();
         final var errorMessage = messageSource.getMessage(message, args);

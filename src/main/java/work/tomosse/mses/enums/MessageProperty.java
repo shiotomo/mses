@@ -20,6 +20,7 @@ public enum MessageProperty {
     NotFoundMinecraftAccount("api.message.error.notFoundMinecraftAccount"),
     InvalidPassword("api.message.error.InvalidPassword"),
     CannotReadMinecraftServer("api.message.error.cannotReadMinecraftServer"),
+    WhitelistPermissionError("api.message.error.whitelistPermissionError"),
     ;
 
     private String message;

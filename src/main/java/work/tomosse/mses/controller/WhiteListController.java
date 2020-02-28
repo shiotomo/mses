@@ -1,6 +1,9 @@
 package work.tomosse.mses.controller;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,12 +22,17 @@ public class WhiteListController {
     /**
      * whitelistを表示する
      *
+     * @param principal
+     * @param id
      * @param mav
      * @return
      */
     @GetMapping("/{id}")
-    public ModelAndView show(@PathVariable final Long id, final ModelAndView mav) {
-        mav.addObject("whiteList", whiteListService.getWhiteList(id));
+    public ModelAndView show(
+            @AuthenticationPrincipal final Principal principal,
+            @PathVariable final Long id,
+            final ModelAndView mav) {
+        mav.addObject("whiteList", whiteListService.getWhiteList(principal.getName(), id));
         mav.setViewName("whitelist/index");
         return mav;
     }

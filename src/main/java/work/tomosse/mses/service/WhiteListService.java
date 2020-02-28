@@ -12,7 +12,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import work.tomosse.mses.enums.ErrorCode;
 import work.tomosse.mses.exception.MsesBadRequestException;
+import work.tomosse.mses.exception.MsesForbiddenException;
 import work.tomosse.mses.model.msns.WhiteList;
+import work.tomosse.mses.repository.AccountMsnsRepository;
+import work.tomosse.mses.repository.AccountRepository;
 import work.tomosse.mses.repository.MsnsRepository;
 import work.tomosse.mses.util.HttpClientUtils;
 import work.tomosse.mses.util.UrlUtils;
@@ -28,6 +31,29 @@ public class WhiteListService {
 
     @Autowired
     MsnsRepository msnsRepository;
+
+    @Autowired
+    AccountRepository accountRepository;
+
+    @Autowired
+    AccountMsnsRepository accountMsnsRepository;
+
+    /**
+     * whitelist.jsonを取得する
+     * 権限がない場合403エラー
+     *
+     * @param id
+     * @return
+     */
+    public List<WhiteList> getWhiteList(final String accountName, final Long id) {
+        final var account = accountRepository.selectByName(accountName);
+        final var msnsList = accountMsnsRepository.getMsnsWhereAccountId(account.getId());
+        final var isPermission = msnsList.stream().anyMatch(msns -> msns.getId() == id);
+        if (isPermission == false) {
+            throw new MsesForbiddenException(ErrorCode.WhitelistPermissionError);
+        }
+        return getWhiteList(id);
+    }
 
     /**
      * whitelist.jsonを取得する
@@ -50,4 +76,5 @@ public class WhiteListService {
             throw new MsesBadRequestException(ErrorCode.CannotReadWhiteList);
         }
     }
+
 }
