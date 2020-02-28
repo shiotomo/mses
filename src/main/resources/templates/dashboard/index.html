@@ -14,26 +14,32 @@
       <a th:href="@{/account}" class="button is-info">Account List</a>
       <a th:href="@{/msns/new}" class="button is-info">New msns</a>
     </span>
-    <div class="card">
-      <header class="card-header">
-        <p class="card-header-title">Monitoring Minecraft Server</p>
-      </header>
-      <div class="card-content">
-        <div class="content">
-          <label>Host</label>
-          <p th:text="${minecraftServer.getHost()}"></p>
-          <label>Version</label>
-          <p th:text="${minecraftServer.getVersion()}"></p>
-          <label>Status</label>
-          <ul th:each="entry : ${minecraftServer.getStatus()}">
-            <li th:text="${entry.key} + ':' + ${entry.value}"></li>
-          </ul>
+
+    <div th:each="msns : ${msnsList}">
+      <div class="card">
+        <header class="card-header">
+          <p th:text="${msns.getHost()}" class="card-header-title"></p>
+        </header>
+        <div class="card-content">
+          <div class="content">
+            <label>Msns Port</label>
+            <p th:text="${msns.getPort()}"></p>
+            <label>Minecraft Server Version</label>
+            <p th:text="${msns.getVersion()}"></p>
+            <label>Status</label>
+            <!--
+            <ul th:each="entry : ${minecraftServer.getStatus()}">
+              <li th:text="${entry.key} + ':' + ${entry.value}"></li>
+            </ul>
+            -->
+          </div>
         </div>
+        <footer class="card-footer">
+          <a th:href="@{'/whitelist/' + ${msns.getId()}}" class="card-footer-item">white list</a>
+          <a th:href="@{'/ops/' + ${msns.getId()}}" class="card-footer-item">ops</a>
+        </footer>
       </div>
-      <footer class="card-footer">
-        <a th:href="@{/whitelist}" class="card-footer-item">white list</a>
-        <a th:href="@{/ops}" class="card-footer-item">ops</a>
-      </footer>
+      <br />
     </div>
   </div>
 </body>

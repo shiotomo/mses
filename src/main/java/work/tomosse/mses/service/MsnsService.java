@@ -27,7 +27,7 @@ public class MsnsService {
     /**
      * 指定したROLEに適したmsnsの一覧を返却する
      * ADMIN: 全msnsを返却する
-     * USER: user_msnsが存在するmsnsのみ返却する
+     * USER: account_msnsが存在するmsnsのみ返却する
      *
      * @param name
      * @return

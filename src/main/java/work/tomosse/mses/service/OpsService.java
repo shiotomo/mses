@@ -10,11 +10,12 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import work.tomosse.mses.config.MsesProperty;
 import work.tomosse.mses.enums.ErrorCode;
 import work.tomosse.mses.exception.MsesBadRequestException;
 import work.tomosse.mses.model.msns.OpsList;
+import work.tomosse.mses.repository.MsnsRepository;
 import work.tomosse.mses.util.HttpClientUtils;
+import work.tomosse.mses.util.UrlUtils;
 
 @Service
 public class OpsService {
@@ -23,16 +24,21 @@ public class OpsService {
     HttpClientUtils httpClientUtils;
 
     @Autowired
-    MsesProperty msesProperty;
+    UrlUtils urlUtils;
+
+    @Autowired
+    MsnsRepository msnsRepository;
 
     /**
      * ops.jsonを取得する
      *
+     * @param id
      * @return
      */
-    public List<OpsList> getOpsList() {
+    public List<OpsList> getOpsList(final Long id) {
         try {
-            final var msnsUrl = msesProperty.getMsnsUrl() + "/api/v1/ops";
+            final var msns = msnsRepository.selectById(id);
+            final var msnsUrl = urlUtils.getMsnsUrl(msns, "/api/v1/ops");
             final var resultJson = httpClientUtils.getRequest(msnsUrl);
             final var objectMapper = new ObjectMapper();
             final var opsList = objectMapper.readValue(resultJson, new TypeReference<List<OpsList>>() {});
