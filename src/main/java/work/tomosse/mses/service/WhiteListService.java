@@ -11,6 +11,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import work.tomosse.mses.enums.ErrorCode;
+import work.tomosse.mses.enums.Role;
 import work.tomosse.mses.exception.MsesBadRequestException;
 import work.tomosse.mses.exception.MsesForbiddenException;
 import work.tomosse.mses.model.msns.WhiteList;
@@ -47,6 +48,10 @@ public class WhiteListService {
      */
     public List<WhiteList> getWhiteList(final String accountName, final Long id) {
         final var account = accountRepository.selectByName(accountName);
+        // accountがADMINの場合whitelistが表示できるため、whitelistを返却
+        if (Role.ADMIN.getRole().equals(account.getRole())) {
+            return getWhiteList(id);
+        }
         final var msnsList = accountMsnsRepository.getMsnsWhereAccountId(account.getId());
         final var isPermission = msnsList.stream().anyMatch(msns -> msns.getId() == id);
         if (isPermission == false) {
