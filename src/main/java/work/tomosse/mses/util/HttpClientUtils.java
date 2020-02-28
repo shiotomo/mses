@@ -1,6 +1,5 @@
 package work.tomosse.mses.util;
 
-import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -24,7 +23,7 @@ public class HttpClientUtils {
             final var bodyHandler = HttpResponse.BodyHandlers.ofString(StandardCharsets.UTF_8);
             final var httpResponse = HttpClient.newBuilder().build().send(httpRequest, bodyHandler);
             return httpResponse.body();
-        } catch (IOException | InterruptedException e) {
+        } catch (final Exception e) {
             // Excptionが発生した場合nullを返却する
             return null;
         }

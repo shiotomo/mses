@@ -22,16 +22,12 @@
         </header>
         <div class="card-content">
           <div class="content">
-            <label>Msns Port</label>
-            <p th:text="${msns.getPort()}"></p>
             <label>Minecraft Server Version</label>
             <p th:text="${msns.getVersion()}"></p>
             <label>Status</label>
-            <!--
-            <ul th:each="entry : ${minecraftServer.getStatus()}">
+            <ul th:each="entry : ${msns.getStatus()}">
               <li th:text="${entry.key} + ':' + ${entry.value}"></li>
             </ul>
-            -->
           </div>
         </div>
         <footer class="card-footer">

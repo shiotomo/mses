@@ -42,7 +42,6 @@ public class DashboardController {
     @GetMapping
     public ModelAndView index(final ModelAndView mav, @AuthenticationPrincipal final Principal principal) {
         mav.addObject("account", accountService.getAccountByName(principal.getName()));
-        mav.addObject("minecraftServer", minecraftServerService.getStatus());
         mav.addObject("msnsList", msnsService.getListByRole(principal.getName()));
         mav.setViewName("dashboard/index");
         return mav;

@@ -21,4 +21,17 @@ public class UrlUtils {
         return msns.getHost() + ":" + msns.getPort() + path;
     }
 
+    /**
+     * msnsのURLを返却する
+     *
+     * @param msns
+     * @return
+     */
+    public String getMsnsUrl(final Msns msns) {
+        if (msns.getPort() == null) {
+            return msns.getHost();
+        }
+        return msns.getHost() + ":" + msns.getPort();
+    }
+
 }

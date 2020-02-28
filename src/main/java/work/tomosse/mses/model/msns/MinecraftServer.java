@@ -10,6 +10,10 @@ import lombok.Data;
 
 @Data
 public class MinecraftServer {
+    @JsonProperty("id")
+    @NotBlank
+    private Long id;
+
     @JsonProperty("version")
     @NotBlank
     private String version;
