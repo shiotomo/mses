@@ -102,6 +102,7 @@ public class MsnsService {
                 final var resultJson = httpClientUtils.getRequest(url);
                 final var minecraftServer = objectMapper.readValue(resultJson, MinecraftServer.class);
                 minecraftServer.setId(msns.getId());
+                minecraftServer.setHost(urlUtils.getMsnsUrl(msns));
                 minecraftServerList.add(minecraftServer);
             } catch (final IllegalArgumentException | JsonProcessingException e) {
                 // Exceptionが発生した場合は全てのstatusが存在しないMinecraftServerをListに格納
