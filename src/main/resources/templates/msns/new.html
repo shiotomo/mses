@@ -12,13 +12,12 @@
     <div class="columns">
       <div class="column is-3"></div>
       <div class="column is-6">
+        <a th:href="@{/dashboard}"><< Dashboard</a>
         <div class="card">
           <header class="card-header">
             <p class="card-header-title">New msns</p>
           </header>
           <div class="card-content">
-            <a th:href="@{/dashboard}" class="button is-primary">Dashboard</a>
-            <hr />
             <div class="content">
               <form th:action="@{/msns/create}" method="POST">
                 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
