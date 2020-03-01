@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import work.tomosse.mses.service.OpsService;
+import work.tomosse.mses.service.OpsServiceUT;
 
 @Controller
 @RequestMapping("/ops")
 public class OpsController {
 
     @Autowired
-    OpsService opsService;
+    OpsServiceUT opsService;
 
     /**
      * whitelistを表示する

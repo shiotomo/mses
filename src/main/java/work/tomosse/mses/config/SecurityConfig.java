@@ -11,14 +11,14 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import work.tomosse.mses.enums.Role;
-import work.tomosse.mses.service.UserService;
+import work.tomosse.mses.service.UserServiceUT;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    UserService userService;
+    UserServiceUT userService;
 
 //    private static String ROLE_ADMIN = "ROLE_" + Role.ADMIN.getRole();
 //    private static String ROLE_User = "ROLE_" + Role.USER.getRole();
