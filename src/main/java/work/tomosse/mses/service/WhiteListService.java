@@ -82,4 +82,21 @@ public class WhiteListService {
         }
     }
 
+    /**
+     * whitelist.jsonにユーザを追加する
+     *
+     * @param msnsId
+     * @param whiteList
+     */
+    public void putUserToWhiteList(final Long msnsId, final WhiteList whiteList) {
+        try {
+            final var msns = msnsRepository.selectById(msnsId);
+            final var url = urlUtils.getMsnsUrl(msns) + "/api/v1/whitelist/add";
+            final var objectMapper = new ObjectMapper();
+            final var requestBody = objectMapper.writeValueAsString(whiteList);
+            httpClientUtils.postRequest(url, requestBody);
+        } catch (final JsonProcessingException e) {
+            throw new MsesBadRequestException(ErrorCode.CannotReadWhiteList);
+        }
+    }
 }

@@ -10,6 +10,7 @@
   <div layout:fragment="contents">
     <h1 class="title">Whitelist</h1>
     <a th:href="@{/dashboard}" class="button is-primary">Dashboard</a>
+    <a th:href="@{'/whitelist/' + ${id} + '/new'}" class="button is-primary">Add user</a>
     <table class="table">
       <tr>
         <th>uuid</th>

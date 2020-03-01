@@ -26,7 +26,7 @@ public class OpsController {
     @GetMapping("/{id}")
     public ModelAndView show(@PathVariable final Long id, final ModelAndView mav) {
         mav.addObject("opsList", opsService.getOpsList(id));
-        mav.setViewName("ops/index");
+        mav.setViewName("ops/show");
         return mav;
     }
 

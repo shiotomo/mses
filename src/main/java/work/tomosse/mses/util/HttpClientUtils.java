@@ -28,4 +28,24 @@ public class HttpClientUtils {
             return null;
         }
     }
+
+    /**
+     * 指定したAPIにデータを送信する。送信先でエラーがでた場合400エラー
+     *
+     * @param uri
+     * @param requestBody
+     * @return
+     */
+    public String postRequest(final String uri, final String requestBody) {
+        try {
+            final var httpRequest = HttpRequest.newBuilder(URI.create(uri))
+                    .POST(HttpRequest.BodyPublishers.ofString(requestBody)).build();
+            final var bodyHandler = HttpResponse.BodyHandlers.ofString(StandardCharsets.UTF_8);
+            final var httpResponse = HttpClient.newBuilder().build().send(httpRequest, bodyHandler);
+            return httpResponse.body();
+        } catch (final Exception e) {
+            // Excptionが発生した場合nullを返却する
+            return null;
+        }
+    }
 }
