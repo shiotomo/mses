@@ -10,7 +10,9 @@
 <body>
   <div layout:fragment="contents">
     <h1 class="title">Dashboard</h1>
+    <!--
     <p th:text="${account.getName()} + ':' + ${account.getRole()}"></p>
+    -->
     <span th:if="${account.getRole() == 'ADMIN'}">
       <a th:href="@{/account}" class="button is-primary">Account List</a>
       <a th:href="@{/msns/new}" class="button is-primary">New msns</a>
