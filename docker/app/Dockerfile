@@ -15,4 +15,4 @@ RUN apk add gradle
 RUN apk add bash
 RUN ./gradlew build
 
-CMD java -jar -Djava.security.egd=file:/dev/./urandom -Dspring.profiles.active=production build/libs/mses.jar
+CMD java -Xmx256M -Xms256M -jar -Djava.security.egd=file:/dev/./urandom -Dspring.profiles.active=production build/libs/mses.jar

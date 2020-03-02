@@ -5,6 +5,7 @@ build/
 !**/src/test/**
 application-dev.yml
 application-product.yml
+application-production.yml
 .env
 mysql_data
 
