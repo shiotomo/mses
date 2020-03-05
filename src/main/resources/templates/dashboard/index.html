@@ -34,8 +34,16 @@
           </div>
         </div>
         <footer class="card-footer">
-          <a th:href="@{'/whitelist/' + ${msns.getId()}}" class="card-footer-item">white list</a>
-          <a th:href="@{'/ops/' + ${msns.getId()}}" class="card-footer-item">ops</a>
+          <span class="card-footer-item">
+            <a th:href="@{'/whitelist/' + ${msns.getId()}}">white list</a>
+          </span>
+          <span th:if="${account.getRole() == 'ADMIN'}" class="card-footer-item">
+            <a th:href="@{'/ops/' + ${msns.getId()}}">ops</a>
+          </span>
+          <form name="msns_delete" th:action="@{'/msns/' + ${msns.getId()} + '/delete'}"
+            th:method="DELETE" th:if="${account.getRole() == 'ADMIN'}" class="card-footer-item">
+            <a href="javascript:msns_delete.submit()">DELETE</a>
+          </form>
         </footer>
       </div>
       <br />
