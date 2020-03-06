@@ -54,6 +54,7 @@ public class AccountController {
         mav.addObject("account", accountService.getAccountById(id));
         mav.addObject("loginLogList", loginLogService.selectWhrereAccountId(id));
         mav.addObject("msnsList", accountMsnsService.getMsnsWhereAccountId(id));
+        mav.addObject("accountMsnsList", accountMsnsService.getWhrereAccountId(id));
         mav.setViewName("account/show");
         return mav;
     }

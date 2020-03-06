@@ -69,7 +69,7 @@ public class AccountMsnsController {
      */
     @DeleteMapping("/{id}/delete")
     public String delete(
-            @PathVariable("account_id") final Long accountId,
+            @PathVariable("accountId") final Long accountId,
             @PathVariable("id") final Long id
             ) {
         accountMsnsService.delete(id);

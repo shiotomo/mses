@@ -16,6 +16,10 @@ public class AccountMsnsService {
     @Autowired
     AccountMsnsRepository accountMsnsRepository;
 
+    public List<AccountMsns> getWhrereAccountId(final Long accountId) {
+        return accountMsnsRepository.selectWhereAccountId(accountId);
+    }
+
     /**
      * 指定したaccountIdを持つaccount_msnsに紐付いたmsnsを取得する
      *

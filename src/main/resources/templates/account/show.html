@@ -13,6 +13,24 @@
     <a th:href="@{/account}" class="button is-primary">Account List</a>
     <a th:href="@{'/account/' + ${account.getId()} + '/account_msns/new'}" class="button is-primary">New AccountMsns</a>
     <br />
+    <label>account msns</label>
+    <table class="table">
+      <tr>
+        <th>id</th>
+        <th>msns id</th>
+        <th>delete</th>
+      </tr>
+      <tr th:each="accountMsns: ${accountMsnsList}">
+        <td th:text="${accountMsns.getId()}"></td>
+        <td th:text="${accountMsns.getMsnsId()}"></td>
+        <td>
+          <form th:action="@{'/account/'  + ${account.getId()} + '/account_msns/' + ${accountMsns.getId()} + '/delete'}"
+            th:method="DELETE">
+            <input type="submit" value="delete" class="button is-danger">
+          </form>
+        </td>
+      </tr>
+    </table>
     <label>msns</label>
     <table class="table">
       <tr>
@@ -20,7 +38,6 @@
         <th>host</th>
         <th>port</th>
         <th>version</th>
-      </tr>
       <tr th:each="msns : ${msnsList}">
         <td th:text="${msns.getId()}"></td>
         <td th:text="${msns.getHost()}"></td>
