@@ -2,7 +2,7 @@
 
 ## リポジトリについて
 
-[msns](https://github.com/shiotomo/msms)の拡張システムです。
+[msns](https://github.com/shiotomo/msns)の拡張システムです。
 Web上で複数のmsnsを管理することができます。
 
 ## 使用技術
