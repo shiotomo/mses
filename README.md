@@ -2,8 +2,18 @@
 
 ## リポジトリについて
 
-[msns](https://github.com/shiotomo/mses)の拡張システムです。
+[msns](https://github.com/shiotomo/msms)の拡張システムです。
 Web上で複数のmsnsを管理することができます。
+
+## 使用技術
+
+- Java 11
+- Spring Boot 2.2.3
+- Gradle 6.1.1
+- MySQL 8.0
+- MyBatis
+- Flyway
+- Thymeleaf
 
 ## 環境構築
 
