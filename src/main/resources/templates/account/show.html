@@ -9,8 +9,26 @@
 </head>
 <body>
   <div layout:fragment="contents">
-    <h1 class="title">Login log</h1>
+    <h1 th:text="'Account Info: ' + ${account.getName()}" class="title"></h1>
     <a th:href="@{/account}" class="button is-primary">Account List</a>
+    <a th:href="@{'/account/' + ${account.getId()} + '/account_msns/new'}" class="button is-primary">New AccountMsns</a>
+    <br />
+    <label>msns</label>
+    <table class="table">
+      <tr>
+        <th>id</th>
+        <th>host</th>
+        <th>port</th>
+        <th>version</th>
+      </tr>
+      <tr th:each="msns : ${msnsList}">
+        <td th:text="${msns.getId()}"></td>
+        <td th:text="${msns.getHost()}"></td>
+        <td th:text="${msns.getPort()}"></td>
+        <td th:text="${msns.getVersion()}"></td>
+      </tr>
+    </table>
+    <label>Login Log</label>
     <table class="table">
       <tr>
         <th>LoginDate</th>

@@ -52,7 +52,7 @@ public class WhiteListService {
         if (Role.ADMIN.getRole().equals(account.getRole())) {
             return getWhiteList(id);
         }
-        final var msnsList = accountMsnsRepository.getMsnsWhereAccountId(account.getId());
+        final var msnsList = accountMsnsRepository.selectMsnsWhereAccountId(account.getId());
         final var isPermission = msnsList.stream().anyMatch(msns -> msns.getId() == id);
         if (isPermission == false) {
             throw new MsesForbiddenException(ErrorCode.WhitelistPermissionError);

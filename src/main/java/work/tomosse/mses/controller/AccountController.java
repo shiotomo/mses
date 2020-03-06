@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import work.tomosse.mses.model.db.Account;
+import work.tomosse.mses.service.AccountMsnsService;
 import work.tomosse.mses.service.AccountService;
 import work.tomosse.mses.service.LoginLogService;
 
@@ -21,6 +22,9 @@ public class AccountController {
 
     @Autowired
     AccountService accountService;
+
+    @Autowired
+    AccountMsnsService accountMsnsService;
 
     @Autowired
     LoginLogService loginLogService;
@@ -46,9 +50,10 @@ public class AccountController {
      * @return
      */
     @GetMapping("/{id}")
-    public ModelAndView show(final ModelAndView mav, @PathVariable final Long id) {
+    public ModelAndView show(final ModelAndView mav, @PathVariable("id") final Long id) {
         mav.addObject("account", accountService.getAccountById(id));
         mav.addObject("loginLogList", loginLogService.selectWhrereAccountId(id));
+        mav.addObject("msnsList", accountMsnsService.getMsnsWhereAccountId(id));
         mav.setViewName("account/show");
         return mav;
     }
@@ -73,7 +78,7 @@ public class AccountController {
      * @return
      */
     @GetMapping("/{id}/edit")
-    public ModelAndView edit(final ModelAndView mav, @PathVariable final Long id) {
+    public ModelAndView edit(final ModelAndView mav, @PathVariable("id") final Long id) {
         mav.addObject("account", accountService.getAccountById(id));
         mav.setViewName("account/edit");
         return mav;
@@ -94,12 +99,12 @@ public class AccountController {
     /**
      * accountを更新する
      *
-     * @param accountId
+     * @param id
      * @param account
      * @return
      */
     @PutMapping("/{id}/update")
-    public String putUpdate(@PathVariable final Long id, @ModelAttribute final Account account) {
+    public String putUpdate(@PathVariable("id") final Long id, @ModelAttribute final Account account) {
         accountService.updateAccount(id, account);
         return "redirect:/account";
     }

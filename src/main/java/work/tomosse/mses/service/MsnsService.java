@@ -39,6 +39,15 @@ public class MsnsService {
     AccountMsnsRepository accountMsnsRepository;
 
     /**
+     * msnsの一覧を取得する
+     *
+     * @return
+     */
+    public List<Msns> getMsns() {
+        return msnsRepository.select();
+    }
+
+    /**
      * 指定したROLEに適したmsns(MinecraftServer)の一覧を返却する
      * ADMIN: 全msnsを返却する
      * USER: account_msnsが存在するmsnsのみ返却する
@@ -52,7 +61,7 @@ public class MsnsService {
             final var msnsList = msnsRepository.select();
             return getMinecraftServerList(msnsList);
         }
-        final var msnsList = accountMsnsRepository.getMsnsWhereAccountId(account.getId());
+        final var msnsList = accountMsnsRepository.selectMsnsWhereAccountId(account.getId());
         return getMinecraftServerList(msnsList);
     }
 
