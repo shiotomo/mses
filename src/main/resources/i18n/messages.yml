@@ -14,3 +14,40 @@ api:
       InvalidPassword: "Invalid Password"  
       cannotReadMinecraftServer: "Can not read minecraft server."
       whitelistPermissionError: "Permission error."
+mses:
+  template:
+    message:
+      account:
+        index:
+          title: "Account list"
+        show:
+          title: "Account info"
+        new:
+          title: "New account"
+        edit:
+          title: "Update account"
+      account_msns:
+        new:
+          title: "New account msns"
+      dashboard:
+        index:
+          title: "Dashboard"
+      msns:
+        new:
+          title: "New msns"
+        edit:
+          title: "Update msns"
+      ops:
+        show:
+          title: "Ops"
+      profile:
+        edit:
+          title: "Edit profile"
+      session:
+        login:
+          title: "Mses login"
+      whitelist:
+        new:
+          title: "Add user to whitelist"
+        show:
+          title: "Whitelist"
