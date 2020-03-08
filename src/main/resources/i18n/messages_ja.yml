@@ -1,3 +1,37 @@
 mses:
-  message:
-    
+  template:
+    message:
+      account:
+        index:
+          title: "Account一覧ページ"
+        show:
+          title: "Account詳細ページ"
+        new:
+          title: "Account作成ページ"
+        edit:
+          title: "Account更新ページ"
+      account_msns:
+        new:
+          title: "AccountMsns作成ページ"
+      dashboard:
+        index:
+          title: "Dashboard"
+      msns:
+        new:
+          title: "msns登録ページ"
+        edit:
+          title: "msns情報更新ページ"
+      ops:
+        show:
+          title: "Ops"
+      profile:
+        edit:
+          title: "パスワード更新"
+      session:
+        login:
+          title: "Mses login"
+      whitelist:
+        new:
+          title: "Whitelistにアカウントを追加"
+        show:
+          title: "Whitelist"
