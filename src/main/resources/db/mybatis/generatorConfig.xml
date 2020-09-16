@@ -35,6 +35,7 @@
     <table tableName="login_log"></table>
     <table tableName="msns"></table>
     <table tableName="account_msns"></table>
+    <table tableName="access_log"></table>
 
   </context>
 </generatorConfiguration>
