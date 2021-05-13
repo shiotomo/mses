@@ -25,7 +25,7 @@ Web上で複数のmsnsを管理することができます。
 ```
 spring:
   datasource:
-    url: jdbc:mysql://{host}:33062/mses_develop
+    url: jdbc:mysql://{host}:3306/mses_develop
     username: {username}
     password: {password}
     driverClassName: com.mysql.cj.jdbc.Driver
